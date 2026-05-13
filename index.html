@@ -35,10 +35,11 @@
     const waitRef = ref(db, "waitTime");
 
     onValue(waitRef, (snapshot) => {
-      document.getElementById("wait").innerText =
-        snapshot.val() + "分";
-    });
+  const value = snapshot.val();
 
+  document.getElementById("wait").innerText =
+    (value ?? "--") + "分";
+});
   </script>
 
 </body>
