@@ -4,31 +4,38 @@
   <meta charset="UTF-8">
   <title>文化祭サイト</title>
 </head>
+
 <body style="text-align:center;font-family:sans-serif;">
 
   <h1>1年5組 文化祭</h1>
 
-</body>
+  <h2>待ち時間</h2>
+  <div id="wait">--</div>
+
   <script type="module">
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-const firebaseConfig = {apiKey: "AIzaSyAAlxZGPH72mvgePyM3RX_xy8xlhfv92Rk",
-    authDomain: "yoshidagyouhoufestival1-5.firebaseapp.com",
-    databaseURL: "https://yoshidagyouhoufestival1-5-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "yoshidagyouhoufestival1-5",
-    storageBucket: "yoshidagyouhoufestival1-5.firebasestorage.app",
-    messagingSenderId: "439419753147",
-    appId: "1:439419753147:web:f1b5a52e69d4e6e42f0f9e"
-};
+    const firebaseConfig = {
+      apiKey: "AIzaSyAAlxZGPH72mvgePyM3RX_xy8xlhfv92Rk",
+      authDomain: "yoshidagyouhoufestival1-5.firebaseapp.com",
+      databaseURL: "https://yoshidagyouhoufestival1-5-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "yoshidagyouhoufestival1-5",
+      storageBucket: "yoshidagyouhoufestival1-5.firebasestorage.app",
+      messagingSenderId: "439419753147",
+      appId: "1:439419753147:web:f1b5a52e69d4e6e42f0f9e"
+    };
 
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
 
-const waitRef = ref(db, "waitTime");
+    const waitRef = ref(db, "waitTime");
 
-onValue(waitRef, (snapshot) => {
-  console.log(snapshot.val());
-});
-</script>
+    onValue(waitRef, (snapshot) => {
+      document.getElementById("wait").innerText =
+        snapshot.val() + "分";
+    });
+  </script>
+
+</body>
+</html>
