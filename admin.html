@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>管理画面</title>
+</head>
+
+<body style="text-align:center;font-family:sans-serif;">
+
+  <h1>🛠 待ち時間管理</h1>
+
+  <input type="number" id="input" placeholder="分数">
+
+  <button onclick="update()">更新</button>
+
+  <p id="status"></p>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getDatabase, ref, set }
+    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAAlxZGPH72mvgePyM3RX_xy8xlhfv92Rk",
+      authDomain: "yoshidagyouhoufestival1-5.firebaseapp.com",
+      databaseURL: "https://yoshidagyouhoufestival1-5-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "yoshidagyouhoufestival1-5",
+      storageBucket: "yoshidagyouhoufestival1-5.firebasestorage.app",
+      messagingSenderId: "439419753147",
+      appId: "1:439419753147:web:f1b5a52e69d4e6e42f0f9e"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    window.update = function () {
+      const val = document.getElementById("input").value;
+
+      set(ref(db, "waitTime"), Number(val));
+
+      document.getElementById("status").innerText =
+        "更新しました：" + val + "分";
+    };
+  </script>
+
+</body>
+</html>
