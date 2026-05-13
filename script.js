@@ -3,10 +3,10 @@ import { getDatabase, ref, onValue }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 const firebaseConfig = {
-  apiKey: "YOUR_KEY",
-  authDomain: "YOUR_DOMAIN",
-  databaseURL: "YOUR_DB_URL",
-  projectId: "YOUR_ID"
+  apiKey: "AIzaSyAAlxZGPH72mvgePyM3RX_xy8xlhfv92Rk",
+  authDomain: "yoshidagyouhoufestival1-5.firebaseapp.com",
+  databaseURL: "https://yoshidagyouhoufestival1-5-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "yoshidagyouhoufestival1-5"
 };
 
 const app = initializeApp(firebaseConfig);
