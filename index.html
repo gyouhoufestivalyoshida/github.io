@@ -2,12 +2,12 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>1年5組 文化祭</title>
+  <title>文化祭サイト</title>
 </head>
 
-<body style="text-align:center;font-family:sans-serif;">
+<body style="text-align:center;font-family:sans-serif;background:#f5f5f5;">
 
-  <h1>🎪 1年5組 文化祭</h1>
+  <h1>🎪 文化祭サイト</h1>
 
   <h2>現在の待ち時間</h2>
 
@@ -15,11 +15,19 @@
 
   <p>リアルタイム更新中</p>
 
+  <hr>
+
+  <h3>📌 管理用リンク（非公開推奨）</h3>
+  <p>admin.html を作ればスマホで更新可能</p>
+
+  <!-- Firebase（ここだけ毎回差し替え） -->
   <script type="module">
+
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getDatabase, ref, onValue }
     from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
+    // 🔥 あなたのFirebase設定（ここだけ固定で使う）
     const firebaseConfig = {
       apiKey: "AIzaSyAAlxZGPH72mvgePyM3RX_xy8xlhfv92Rk",
       authDomain: "yoshidagyouhoufestival1-5.firebaseapp.com",
@@ -30,16 +38,20 @@
       appId: "1:439419753147:web:f1b5a52e69d4e6e42f0f9e"
     };
 
+    // 初期化
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
+
+    // データ場所
     const waitRef = ref(db, "waitTime");
 
+    // リアルタイム取得
     onValue(waitRef, (snapshot) => {
-  const value = snapshot.val();
+      const value = snapshot.val();
+      document.getElementById("wait").innerText =
+        (value ?? "--") + "分";
+    });
 
-  document.getElementById("wait").innerText =
-    (value ?? "--") + "分";
-});
   </script>
 
 </body>
